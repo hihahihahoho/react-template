@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import { ReactElement } from 'react';
-import Home from '../pages/Home/Home';
 
 interface Route {
   component?: string | ReactElement;
@@ -13,30 +12,29 @@ interface Route {
 
 const routes: Route[] = [
   {
-    component: <Home />,
-    exact: true,
-    path: '/home',
+    component: 'home',
+    path: 'home',
     routes: [
       {
-        component: <Home />,
-        path: '/home-child',
+        component: 'HomeChild2',
+        path: 'home-child',
       }, {
-        component: '/HomeChild2',
-        path: '/child-abc',
+        component: 'HomeChild2',
+        path: 'child-abc',
+        exact: true,
         routes: [
           {
-            component: '/HomeChild21',
-            path: '/HomeChild21',
+            component: 'HomeChild21',
+            path: 'HomeChild21',
           }, {
-            component: '/HomeChild22',
+            component: 'HomeChild22',
             path: '/',
-            children: [
+            routes: [
               {
-                component: '/HomeChild221',
-                path: '/HomeChild221',
+                component: 'HomeChild221',
+                path: 'HomeChild221',
               }, {
                 component: '/HomeChild222',
-                path: '/',
               }
             ]
           }
@@ -47,33 +45,21 @@ const routes: Route[] = [
 ];
 
 
-const getRoutes = (routeChild: Route): Route[] => {
-  // Add type checking to ensure that the input is a valid Route object
-  if (!routeChild || typeof routeChild !== 'object' || !routeChild.hasOwnProperty('path')) {
-    throw new Error('Invalid input: routeChild must be a valid Route object');
+function inheritProperty(routes?: Route[], parrentRouteProp?: Route, excludedProp: string[] = []) {
+  if (!routes) {
+    return;
   }
+  return routes.map(route => {
+    const { ...routeProp } = route;
+    const filteredObject = _.omit(parrentRouteProp, excludedProp)
+    route = { ...filteredObject, ...routeProp }
+    if (route.routes) {
+      route.routes = inheritProperty(route.routes, route, excludedProp);
+    }
+    return route;
+  });
+}
 
-  let routes: Route[] = [];
+const routes2 = inheritProperty(routes, {}, ['path', 'routes', 'component', 'name']);
 
-  // Set the path for the current route
-  let path = `${routeChild.parentPath || ''}${routeChild.path || ''}`;
-  path = path.replace('//', '/')
-  routes.push(_.omit({ ...routeChild, path: path || '' }, ['routes'], ['parentPath']));
-
-  // Recursively process any child routes
-  if (Array.isArray(routeChild.routes)) {
-    let routeChildProps = _.omit({ ...routeChild }, ['routes'], ['parentPath']);
-    routes.push(
-      ..._.flatMapDeep(routeChild.routes, (child) => getRoutes(_.defaultsDeep({ ...routeChildProps, ...child, parentPath: `${routeChild.parentPath || ''}${routeChild.path || ''}` }))),
-    );
-  }
-
-  return routes;
-};
-
-
-
-
-const route2 = _.flatMapDeep(routes, getRoutes);
-
-export default route2;
+export default routes2;
