@@ -1,51 +1,70 @@
 import _ from 'lodash';
-import { ReactElement } from 'react';
+import Page404 from '../pages/404/404';
+import Home from '../pages/Home/Home';
+import Female from '../pages/Products/Female/Female';
+import Pants from '../pages/Products/Female/Pants/Pants';
+import PantsDetail from '../pages/Products/Female/Pants/PantsDetail';
 
-interface Route {
-  component?: string | ReactElement;
+interface RouteConfigInterface {
+  component?: string | React.FC;
+  layout?: string | React.FC;
   exact?: boolean;
-  parentPath?: string,
   path?: string;
-  routes?: Route[];
-  children?: Route[];
+  routes?: RouteConfigInterface[];
+  children?: RouteConfigInterface[];
+  index?: boolean;
 }
 
-const routes: Route[] = [
+const page404: RouteConfigInterface = {
+  component: Page404,
+  path: '*',
+}
+
+const routes: RouteConfigInterface[] = [
   {
-    component: 'home',
+    component: Home,
+    index: true
+  }, {
+    component: Home,
     path: 'home',
+  }, {
+    path: 'products',
+    index: false,
     routes: [
       {
-        component: 'HomeChild2',
-        path: 'home-child',
+        component: Home,
+        path: 'male',
       }, {
-        component: 'HomeChild2',
-        path: 'child-abc',
-        exact: true,
+        path: 'cat/female',
         routes: [
           {
-            component: 'HomeChild21',
-            path: 'HomeChild21',
+            component: Female,
+            index: true,
           }, {
-            component: 'HomeChild22',
-            path: '/',
+            component: Home,
+            path: 'shirt',
+          }, {
+            path: 'abc/pants',
             routes: [
               {
-                component: 'HomeChild221',
-                path: 'HomeChild221',
+                index: true,
+                component: Pants,
               }, {
-                component: '/HomeChild222',
+                component: PantsDetail,
+                path: ':id'
               }
             ]
           }
         ]
       }
     ]
+  }, {
+    ...page404
   }
 ];
 
 
-function inheritProperty(routes?: Route[], parrentRouteProp?: Route, excludedProp: string[] = []) {
+function inheritProperty(routes?: RouteConfigInterface[], parrentRouteProp?: RouteConfigInterface, excludedProp: string[] = []): any {
   if (!routes) {
     return;
   }
@@ -55,11 +74,24 @@ function inheritProperty(routes?: Route[], parrentRouteProp?: Route, excludedPro
     route = { ...filteredObject, ...routeProp }
     if (route.routes) {
       route.routes = inheritProperty(route.routes, route, excludedProp);
+      route.routes?.push(page404)
+    }
+
+    if (route.index === false && route.routes) {
+      route.routes = route.routes.map(({ path, ...prop }) => ({
+        ...prop, path: `${route.path}/${path}`
+      }))
     }
     return route;
+
   });
 }
 
-const routes2 = inheritProperty(routes, {}, ['path', 'routes', 'component', 'name']);
 
-export default routes2;
+const routesRouter = inheritProperty(routes, {}, ['path', 'routes', 'component', 'name', 'index']);
+
+console.log(routesRouter)
+
+export type { RouteConfigInterface };
+export { routesRouter, routes };
+
