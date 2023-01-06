@@ -1,10 +1,9 @@
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams, useResolvedPath } from "react-router-dom";
 
-const Pants: React.FC = () => {
+const Pants: React.FC = (props) => {
   let { id } = useParams();
-  let location = useLocation();
-  console.log(location)
-
+  const resolvedPath = useResolvedPath(props);
+  console.log(resolvedPath)
   return (
     <>
       <Link to={'../'}>Back</Link>

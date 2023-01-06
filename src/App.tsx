@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import DefaultLayout from './Layout/DefaultLayout/DefaultLayout';
 import { RouteConfigInterface, routesRouter } from './routes/routes';
@@ -37,11 +37,9 @@ const renderRoutes: any = (routes?: RouteConfigInterface[], parentKey?: string) 
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {renderRoutes(routesRouter)}
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      {renderRoutes(routesRouter)}
+    </Routes>
   );
 }
 

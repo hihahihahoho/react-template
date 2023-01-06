@@ -35,7 +35,7 @@ const routes: RouteConfigInterface[] = [
         component: Home,
         path: 'male',
       }, {
-        path: 'cat/female',
+        path: 'female',
         routes: [
           {
             component: Female,
@@ -44,7 +44,7 @@ const routes: RouteConfigInterface[] = [
             component: Home,
             path: 'shirt',
           }, {
-            path: 'abc/pants',
+            path: 'pants',
             routes: [
               {
                 index: true,
