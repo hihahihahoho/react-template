@@ -5,7 +5,8 @@ import { Content, Header } from 'antd/es/layout/layout';
 import Sider from 'antd/es/layout/Sider';
 import classNames from 'classnames/bind';
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useMatch } from 'react-router-dom';
+import { useLocation, useMatch } from 'react-router-dom';
+import { routesRouter } from '../../routes/routes';
 import styles from './DefaultLayout.module.scss';
 const cx = classNames.bind(styles);
 
@@ -42,23 +43,7 @@ const DefaultLayout: React.FC<Props> = ({ children }) => {
       <Layout style={{ height: "100vh" }} hasSider={true}>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo" />
-          <Menu selectedKeys={selectedKeys} defaultOpenKeys={['/products/female']} onClick={handleMenuClick} mode="inline" style={{ height: '100%', borderRight: 0 }}>
-            <Menu.Item key="/">
-              <Link to="/">Home</Link>
-            </Menu.Item>
-            <Menu.SubMenu key="/products" title="Products">
-              <Menu.Item key="/products/male">
-                <Link to="/products/male">Male</Link>
-              </Menu.Item>
-              <Menu.SubMenu key="/products/female" title="Female">
-                <Menu.Item key="/products/female/">
-                  <Link to="/products/female/">All</Link>
-                </Menu.Item>
-                <Menu.Item key="/products/female/pants">
-                  <Link to="/products/female/pants">Pants</Link>
-                </Menu.Item>
-              </Menu.SubMenu>
-            </Menu.SubMenu>
+          <Menu selectedKeys={selectedKeys} defaultOpenKeys={['/products/female']} onClick={handleMenuClick} mode="inline" style={{ height: '100%', borderRight: 0 }} items={routesRouter}>
           </Menu>
         </Sider>
         <Layout className="site-layout">
