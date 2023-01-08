@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import DefaultLayout from '../Layout/DefaultLayout/DefaultLayout';
+import DefaultLayout from '../layouts/DefaultLayout/DefaultLayout';
 import { RouteConfigInterface, routesRouter } from './routes';
 
 const renderRoutes: any = (routes?: RouteConfigInterface[], parentKey?: string) => {
