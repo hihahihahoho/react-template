@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { lazy } from 'react';
 import Page404 from '../pages/404/404';
 // import Home from '../pages/Home/Home';
@@ -74,34 +73,8 @@ const routes: RouteConfigInterface[] = [
   }
 ];
 
-
-function inheritProperty(routes?: RouteConfigInterface[], parrentRouteProp?: RouteConfigInterface, excludedProp: string[] = []): any {
-  if (!routes) {
-    return;
-  }
-  return routes.map(route => {
-    const { ...routeProp } = route;
-    const filteredObject = _.omit(parrentRouteProp, excludedProp)
-    route = { ...filteredObject, ...routeProp }
-    if (route.children) {
-      route.children = inheritProperty(route.children, route, excludedProp);
-      route.children?.push(page404)
-    }
-
-    if (route.index === false && route.children) {
-      route.children = route.children.map(({ path, ...prop }) => ({
-        ...prop, path: `${route.path}/${path}`
-      }))
-    }
-    return route;
-
-  });
-}
-
-
-let routesRouter = inheritProperty(routes, {}, ['path', 'routes', 'children', 'component', 'name', 'index']);
-routesRouter = addKeys(routesRouter, 'children')
+addKeys(routes, 'children')
 
 export type { RouteConfigInterface };
-export { routesRouter, routes };
+export { routes, page404 };
 

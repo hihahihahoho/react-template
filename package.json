@@ -14,6 +14,9 @@
     "antd": "^5.1.0",
     "change-case": "^4.1.2",
     "classnames": "^2.3.2",
+    "dotenv": "^16.0.3",
+    "env-cmd": "^10.1.0",
+    "ftp-deploy": "^2.4.3",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -27,6 +30,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:staging": "env-cmd -f .env.staging yarn build && node deploy.config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -50,6 +54,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.191",
-    "@types/react-router-dom": "^5.3.3"
+    "@types/react-router-dom": "^5.3.3",
+    "webpack-cli": "^5.0.1"
   }
 }
