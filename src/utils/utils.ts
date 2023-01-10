@@ -22,11 +22,9 @@ export function modifyRouterProperties(routes?: RouteConfigInterface[], parentRo
 
 
   return routes.map(route => {
-    let parentPath;
-    if (!parentRouteProp.component) {
-      parentPath = parentRouteProp.fullPath
-      // delete parentRouteProp.fullPath
-    }
+    let parentPath = parentRouteProp.fullPath;
+
+
     if (fullPath && route.path) {
       route.fullPath = `/${parentPath ? `${parentPath}/` : ''}${route.path}`.replace('//', '/');
 
@@ -51,6 +49,10 @@ export function modifyRouterProperties(routes?: RouteConfigInterface[], parentRo
         return child;
       });
     }
+    if (!route.component) {
+      delete route.fullPath
+    }
+
 
     return route;
   });

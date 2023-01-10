@@ -3,7 +3,7 @@ import { Menu } from 'antd';
 import Sider from 'antd/es/layout/Sider';
 import type { MenuProps } from 'antd/es/menu';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { modifiedRouter, RouteConfigInterface } from '../../routes/routes';
 import { getAncestors, getIdByName } from '../../utils/utils';
 import { SidebarCollapsed } from '../DefaultLayout/DefaultLayout';
@@ -49,21 +49,18 @@ items = getItemTree(modifiedRouter)
 
 const Sidebar: React.FC = () => {
   const context = useContext(SidebarCollapsed);
-  let currentLocation: string[] = [];
-  let currentOpen: string[] = [];
-  if (context?.currentLocation) {
-    currentLocation = [getIdByName(modifiedRouter, context?.currentLocation, 'key', 'fullPath')]
-    currentOpen = getAncestors(currentLocation[0])
-  }
-  console.log(currentOpen)
+  const location = useLocation();
+  const currentLocation = [getIdByName(modifiedRouter, location.pathname, 'key', 'fullPath')]
+  const currentOpen = getAncestors(currentLocation[0])
 
-  // console.log(currentOpen)
 
   return (
     <>
       <Sider breakpoint="lg" trigger={null} collapsible collapsed={context?.collapsed}>
         <div className="logo" />
-        <Menu selectedKeys={currentLocation} defaultOpenKeys={currentOpen} mode="inline" style={{ height: '100%', borderRight: 0 }} items={items}>
+        <Menu selectedKeys={currentLocation} defaultOpenKeys={currentOpen} onOpenChange={(openKeys) => {
+          console.log(openKeys)
+        }} mode="inline" style={{ height: '100%', borderRight: 0 }} items={items}>
         </Menu>
       </Sider>
     </>
