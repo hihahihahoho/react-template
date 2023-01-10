@@ -9,21 +9,21 @@ const Home: React.FC = () => {
     { label: 'The Dark Knight', year: 2008 },
     { label: '12 Angry Men', year: 1957 },
     { label: "Schindler's List", year: 1993 },
-    { label: 'Pulp Fiction', year: 1994 }
+    { label: 'Pulp Fiction', year: 1994 },
   ];
   return (
     <>
       <Autocomplete
         disablePortal
-        id="combo-box-demo"
+        id='combo-box-demo'
         options={top100Films}
         sx={{ width: 300 }}
         openOnFocus
-        renderInput={(params) => (<TextField {...params} label="Movie" variant='outlined' />)}
+        renderInput={(params) => <TextField {...params} label='Movie' variant='outlined' />}
       />
       <div>Home</div>
     </>
-  )
-}
+  );
+};
 
-export default Home 
+export default Home;

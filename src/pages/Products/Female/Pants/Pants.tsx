@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Pants: React.FC = () => {
   return (
@@ -6,7 +6,7 @@ const Pants: React.FC = () => {
       <Link to={'../'}>Back</Link>
       <div>Pants</div>
     </>
-  )
-}
+  );
+};
 
-export default Pants 
+export default Pants;

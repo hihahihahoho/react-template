@@ -8,13 +8,10 @@ const renderRoutes: any = (routes?: RouteConfigInterface[], parentKey?: string) 
     let Layout: any = route.layout || DefaultLayout || Fragment;
     let Page: any = route.component;
     if (route.index === false && route.children) {
-      return renderRoutes(route.children, parentKey)
+      return renderRoutes(route.children, parentKey);
     }
     return route.children ? (
-      <Route
-        key={`${parentKey}-${index}`}
-        path={route.path}
-      >
+      <Route key={`${parentKey}-${index}`} path={route.path}>
         {renderRoutes(route.children, parentKey)}
       </Route>
     ) : (
@@ -35,11 +32,7 @@ const renderRoutes: any = (routes?: RouteConfigInterface[], parentKey?: string) 
 };
 
 function RenderRouter() {
-  return (
-    <Routes>
-      {renderRoutes(modifiedRouter)}
-    </Routes>
-  );
+  return <Routes>{renderRoutes(modifiedRouter)}</Routes>;
 }
 
 export default RenderRouter;

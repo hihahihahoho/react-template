@@ -6,10 +6,10 @@ import Pants from '../pages/Products/Female/Pants/Pants';
 import PantsDetail from '../pages/Products/Female/Pants/PantsDetail';
 import { addKeys, modifyRouterProperties } from '../utils/utils';
 
-const Home = lazy(() => import('../pages/Home/Home'))
+const Home = lazy(() => import('../pages/Home/Home'));
 
 interface RouteConfigInterface {
-  key?: string,
+  key?: string;
   title?: string | React.FC;
   component?: string | React.FC;
   icon?: React.ReactNode;
@@ -19,23 +19,24 @@ interface RouteConfigInterface {
   fullPath?: string;
   children?: RouteConfigInterface[];
   index?: boolean;
-  isHideOnMenu?: boolean
+  isHideOnMenu?: boolean;
 }
 
 const page404: RouteConfigInterface = {
   title: '404',
   component: Page404,
   path: '*',
-  isHideOnMenu: true
-}
+  isHideOnMenu: true,
+};
 
 const routes: RouteConfigInterface[] = [
   {
     title: 'Trang chủ',
     component: Home,
     path: '/',
-    index: true
-  }, {
+    index: true,
+  },
+  {
     title: 'Sản phẩm',
     path: 'products',
     index: false,
@@ -44,7 +45,8 @@ const routes: RouteConfigInterface[] = [
         title: 'Nam',
         component: Home,
         path: 'male',
-      }, {
+      },
+      {
         title: 'Nữ',
         path: 'female',
         children: [
@@ -52,11 +54,13 @@ const routes: RouteConfigInterface[] = [
             title: 'Tất cả',
             component: Female,
             index: true,
-          }, {
+          },
+          {
             title: 'Áo',
             component: Home,
             path: 'shirt',
-          }, {
+          },
+          {
             title: 'Quần',
             path: 'pants',
             children: [
@@ -64,25 +68,26 @@ const routes: RouteConfigInterface[] = [
                 title: 'Tất cả',
                 index: true,
                 component: Pants,
-              }, {
+              },
+              {
                 title: 'Chi tiết quần',
                 component: PantsDetail,
                 isHideOnMenu: true,
-                path: ':id'
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }, {
-    ...page404
-  }
+                path: ':id',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    ...page404,
+  },
 ];
 
-addKeys(routes, 'children')
+addKeys(routes, 'children');
 
 const modifiedRouter: RouteConfigInterface[] = addKeys(modifyRouterProperties(routes), 'children');
 export type { RouteConfigInterface };
 export { routes, page404, modifiedRouter };
-
