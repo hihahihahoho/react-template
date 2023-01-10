@@ -4,7 +4,7 @@ const Female: React.FC = () => {
   return (
     <>
       				<Link to={'../'}>Back</Link>
-      <div>female</div>
+      				<div>female</div>
     </>
   );
 };
