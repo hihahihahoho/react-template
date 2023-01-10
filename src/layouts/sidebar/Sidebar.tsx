@@ -5,7 +5,7 @@ import type { MenuProps } from 'antd/es/menu';
 import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { modifiedRouter, RouteConfigInterface } from '../../routes/routes';
-import { getAncestors, getIdByName } from '../../utils/utils';
+import { getAncestors, getIdByName, removeTrailingSlash } from '../../utils/utils';
 import { SidebarCollapsed } from '../DefaultLayout/DefaultLayout';
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -50,8 +50,9 @@ items = getItemTree(modifiedRouter)
 const Sidebar: React.FC = () => {
   const context = useContext(SidebarCollapsed);
   const location = useLocation();
-  const currentLocation = [getIdByName(modifiedRouter, location.pathname, 'key', 'fullPath')]
+  const currentLocation = [getIdByName(modifiedRouter, removeTrailingSlash(location.pathname), 'key', 'fullPath')]
   const currentOpen = getAncestors(currentLocation[0])
+  console.log(location)
 
 
   return (

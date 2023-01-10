@@ -15,6 +15,14 @@ function addKeys<T extends { [key: string]: any }>(arr: T[], childField: string,
 export { addKeys };
 
 
+
+
+
+export function removeTrailingSlash(str: string) {
+  return str.replace(/\/+$/, '').replace('//', '/')
+}
+
+
 export function modifyRouterProperties(routes?: RouteConfigInterface[], parentRouteProp: RouteConfigInterface = {}, includeProp: string[] = [], fullPath: boolean = true): any {
   if (!routes) {
     return;
@@ -26,11 +34,11 @@ export function modifyRouterProperties(routes?: RouteConfigInterface[], parentRo
 
 
     if (fullPath && route.path) {
-      route.fullPath = `/${parentPath ? `${parentPath}/` : ''}${route.path}`.replace('//', '/');
+      route.fullPath = removeTrailingSlash(`/${parentPath ? `${parentPath}/` : ''}${route.path}`);
 
     }
     if (route.index === true) {
-      route.fullPath = `/${parentPath ? `${parentPath}` : ''}`.replace('//', '/')
+      route.fullPath = removeTrailingSlash(`/${parentPath ? `${parentPath}` : ''}`)
     }
     const { ...routeProp } = route;
     let filteredObject: {} = {};
@@ -84,5 +92,3 @@ export const getAncestors = (path?: string): string[] => {
   }, []);
   return ancestors;
 }
-
-

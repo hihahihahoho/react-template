@@ -33,7 +33,7 @@ const routes: RouteConfigInterface[] = [
   {
     title: 'Trang chủ',
     component: Home,
-    path: '',
+    path: '/',
     index: true
   }, {
     title: 'Sản phẩm',
