@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Female: React.FC = () => {
   return (
@@ -6,7 +6,7 @@ const Female: React.FC = () => {
       <Link to={'../'}>Back</Link>
       <div>female</div>
     </>
-  )
-}
+  );
+};
 
-export default Female 
+export default Female;
