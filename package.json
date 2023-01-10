@@ -47,7 +47,8 @@
     "build:staging": "env-cmd -f .env.staging yarn build",
     "deployFtp": "env-cmd -f .env.staging yarn build && node deploy.config.js",
     "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "eject": "react-app-rewired eject",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -70,11 +71,7 @@
   "devDependencies": {
     "@types/lodash": "^4.14.191",
     "@types/react-router-dom": "^5.3.3",
+    "husky": "^8.0.0",
     "webpack-cli": "^5.0.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
