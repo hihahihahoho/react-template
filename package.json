@@ -19,9 +19,15 @@
     "classnames": "^2.3.2",
     "dotenv": "^16.0.3",
     "env-cmd": "^10.1.0",
+    "favicons": "^7.0.2",
+    "favicons-webpack-plugin": "^6.0.0",
     "ftp-deploy": "^2.4.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
     "lodash": "^4.17.21",
+    "prettier": "^2.8.2",
     "react": "^18.2.0",
+    "react-app-rewired": "^2.2.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
@@ -30,12 +36,18 @@
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build:staging": "env-cmd -f .env.staging yarn build && node deploy.config.js",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "build:staging": "env-cmd -f .env.staging yarn build",
+    "deployFtp": "env-cmd -f .env.staging yarn build && node deploy.config.js",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": [
@@ -59,5 +71,10 @@
     "@types/lodash": "^4.14.191",
     "@types/react-router-dom": "^5.3.3",
     "webpack-cli": "^5.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
