@@ -4,34 +4,37 @@ import Page404 from '../pages/404/404';
 import Female from '../pages/Products/Female/Female';
 import Pants from '../pages/Products/Female/Pants/Pants';
 import PantsDetail from '../pages/Products/Female/Pants/PantsDetail';
-import { addKeys } from '../utils/utils';
+import { addKeys, modifyRouterProperties } from '../utils/utils';
 
 const Home = lazy(() => import('../pages/Home/Home'))
 
 interface RouteConfigInterface {
+  key?: string,
   title?: string | React.FC;
   component?: string | React.FC;
+  icon?: React.ReactNode;
   layout?: string | React.FC;
   exact?: boolean;
   path?: string;
+  fullPath?: string;
   children?: RouteConfigInterface[];
   index?: boolean;
+  isHideOnMenu?: boolean
 }
 
 const page404: RouteConfigInterface = {
+  title: '404',
   component: Page404,
   path: '*',
+  isHideOnMenu: true
 }
 
 const routes: RouteConfigInterface[] = [
   {
     title: 'Trang chủ',
     component: Home,
+    path: '',
     index: true
-  }, {
-    title: 'Trang chủ',
-    component: Home,
-    path: 'home',
   }, {
     title: 'Sản phẩm',
     path: 'products',
@@ -50,17 +53,21 @@ const routes: RouteConfigInterface[] = [
             component: Female,
             index: true,
           }, {
-            title: 'Tất cả',
+            title: 'Áo',
             component: Home,
             path: 'shirt',
           }, {
+            title: 'Quần',
             path: 'pants',
             children: [
               {
+                title: 'Tất cả',
                 index: true,
                 component: Pants,
               }, {
+                title: 'Chi tiết quần',
                 component: PantsDetail,
+                isHideOnMenu: true,
                 path: ':id'
               }
             ]
@@ -75,6 +82,7 @@ const routes: RouteConfigInterface[] = [
 
 addKeys(routes, 'children')
 
+const modifiedRouter: RouteConfigInterface[] = addKeys(modifyRouterProperties(routes), 'children');
 export type { RouteConfigInterface };
-export { routes, page404 };
+export { routes, page404, modifiedRouter };
 
