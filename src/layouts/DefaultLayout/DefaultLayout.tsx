@@ -3,6 +3,7 @@ import { Layout } from 'antd';
 import { Content, Header } from 'antd/es/layout/layout';
 import React, { createContext, useState } from 'react';
 import Sidebar from '../sidebar/Sidebar';
+import styles from './DefaultLayout.module.scss';
 
 type Props = {
   children: React.ReactElement;
@@ -23,7 +24,7 @@ const DefaultLayout: React.FC<Props> = ({ children }) => {
   return (
     <>
       <SidebarCollapsed.Provider value={{ collapsed, setCollapsed }}>
-        <Layout style={{ height: '100vh' }} hasSider={true}>
+        <Layout className={styles['side-bar']} style={{ height: '100vh' }} hasSider={true}>
           <Sidebar />
           <Layout className='site-layout'>
             <Header style={{ padding: 0 }}>
