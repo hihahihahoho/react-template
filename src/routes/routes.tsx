@@ -42,7 +42,7 @@ const routes: RouteConfigInterface[] = [
     index: false,
     children: [
       {
-        title: 'Nam',
+        title: 'Nam12312312',
         component: Home,
         path: 'male',
       },
