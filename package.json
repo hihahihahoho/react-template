@@ -1,77 +1,77 @@
 {
-  "name": "react-template",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@ant-design/icons": "^4.8.0",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.11.4",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "antd": "^5.1.0",
-    "change-case": "^4.1.2",
-    "classnames": "^2.3.2",
-    "dotenv": "^16.0.3",
-    "env-cmd": "^10.1.0",
-    "favicons": "^7.0.2",
-    "favicons-webpack-plugin": "^6.0.0",
-    "ftp-deploy": "^2.4.3",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.1.0",
-    "lodash": "^4.17.21",
-    "prettier": "^2.8.2",
-    "react": "^18.2.0",
-    "react-app-rewired": "^2.2.1",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.6.1",
-    "react-scripts": "5.0.1",
-    "sass": "^1.57.1",
-    "tailwindcss": "^3.2.4",
-    "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0"
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write"
-    ]
-  },
-  "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "build:staging": "env-cmd -f .env.staging yarn build",
-    "deployFtp": "env-cmd -f .env.staging yarn build && node deploy.config.js",
-    "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject",
-    "prepare": "husky install"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@types/lodash": "^4.14.191",
-    "@types/react-router-dom": "^5.3.3",
-    "husky": "^8.0.0",
-    "webpack-cli": "^5.0.1"
-  }
+	"name": "react-template",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@ant-design/icons": "^4.8.0",
+		"@emotion/react": "^11.10.5",
+		"@emotion/styled": "^11.10.5",
+		"@mui/material": "^5.11.4",
+		"@testing-library/jest-dom": "^5.14.1",
+		"@testing-library/react": "^13.0.0",
+		"@testing-library/user-event": "^13.2.1",
+		"@types/jest": "^27.0.1",
+		"@types/node": "^16.7.13",
+		"@types/react": "^18.0.0",
+		"@types/react-dom": "^18.0.0",
+		"antd": "^5.1.0",
+		"change-case": "^4.1.2",
+		"classnames": "^2.3.2",
+		"dotenv": "^16.0.3",
+		"env-cmd": "^10.1.0",
+		"favicons": "^7.0.2",
+		"favicons-webpack-plugin": "^6.0.0",
+		"ftp-deploy": "^2.4.3",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.1.0",
+		"lodash": "^4.17.21",
+		"prettier": "^2.8.2",
+		"react": "^18.2.0",
+		"react-app-rewired": "^2.2.1",
+		"react-dom": "^18.2.0",
+		"react-router-dom": "^6.6.1",
+		"react-scripts": "5.0.1",
+		"sass": "^1.57.1",
+		"tailwindcss": "^3.2.4",
+		"typescript": "^4.4.2",
+		"web-vitals": "^2.1.0"
+	},
+	"lint-staged": {
+		"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+			"prettier --write"
+		]
+	},
+	"scripts": {
+		"start": "react-app-rewired start",
+		"build": "react-app-rewired build",
+		"build:design": "env-cmd -f .env.design yarn build",
+		"deployFtp": "env-cmd -f .env.design yarn build && node deploy.config.js",
+		"test": "react-app-rewired test",
+		"eject": "react-app-rewired eject",
+		"prepare": "husky install"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@types/lodash": "^4.14.191",
+		"@types/react-router-dom": "^5.3.3",
+		"husky": "^8.0.0",
+		"webpack-cli": "^5.0.1"
+	}
 }
