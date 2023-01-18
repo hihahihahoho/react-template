@@ -26,7 +26,7 @@ const DefaultLayout: React.FC<Props> = ({ children }) => {
 			<SidebarCollapsed.Provider value={{ collapsed, setCollapsed }}>
 				<Layout className={styles['side-bar']} style={{ height: '100vh' }} hasSider={true}>
 					<Sidebar />
-					<Layout className='site-layout'>
+					<Layout className="site-layout">
 						<Header style={{ padding: 0 }}>
 							{React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
 								className: 'trigger',
