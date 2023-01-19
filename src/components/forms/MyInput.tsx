@@ -1,10 +1,15 @@
 import { Input, InputProps } from 'antd';
+import styled from 'styled-components';
+
+const StyleInput = styled(Input)`
+	&.ant-input {
+		background-color: palevioletred;
+		color: white;
+		font-size: 1em;
+		border-radius: 3px;
+	}
+`;
 
 export default function MyInput(props: InputProps) {
-	return (
-		<Input
-			{...props}
-			className={`${props.className} h-11 rounded-lg hover:border-blue-900 focus:border-blue-900 hover:bg-slate-300 focus:bg-slate-50`}
-		/>
-	);
+	return <StyleInput {...props} />;
 }
