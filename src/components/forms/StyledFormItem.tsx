@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { THEME } from '../../config/theme';
 
 export interface CustomFormItemProp {
+	inputHeight: number;
 	customSize?: keyof typeof THEME.form.size;
 	customColor?: string;
 }
@@ -19,16 +20,33 @@ const StyledFormItem = styled.div<CustomFormItemProp>`
 	fieldset {
 		width: 100%;
 		z-index: 2;
-		/* height: ${({ customSize = 'default' }) => getFormHeight(customSize)}px; */
+		height: ${({ customSize = 'default' }) => getFormHeight(customSize)}px;
+		min-height: ${({ inputHeight }) => {
+			return inputHeight + 6;
+		}}px;
+		position: absolute;
+		top: 0;
+	}
+	& .ant-form-item-control-input,
+	input {
+		min-height: ${({ customSize = 'default' }) => getFormHeight(customSize)}px;
+	}
+	& textarea {
+		margin: 6px 0;
+	}
+	& .ant-form-item-label {
+		position: absolute;
+		z-index: 3;
+		width: 100%;
+		padding: 0 12px;
+		transform: translateY(-50%);
 	}
 	& .ant-select-single {
 		.ant-select-selector {
-			position: absolute;
-			top: 0;
 			height: ${({ customSize = 'default' }) => getFormHeight(customSize)}px;
 			.ant-select-selection-item,
 			.ant-select-selection-placeholder {
-				line-height: ${({ customSize = 'default' }) => getFormHeightMinusBorder(customSize)}px;
+				line-height: ${({ customSize = 'default' }) => getFormHeight(customSize)}px;
 			}
 			.ant-select-selection-search-input {
 				height: ${({ customSize = 'default' }) => getFormHeightMinusBorder(customSize)}px;

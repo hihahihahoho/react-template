@@ -1,5 +1,6 @@
 import { Button, Form, Input, Select } from 'antd';
 import MyFormItem from '../../components/forms/MyFormItem';
+const { TextArea } = Input;
 
 const onFinish = (values: any) => {
 	console.log('Success:', values);
@@ -9,24 +10,51 @@ const Home: React.FC = () => {
 	return (
 		<>
 			<Form layout="vertical" onFinish={onFinish}>
-				<Form.Item
+				<MyFormItem
 					label="Field A"
-					name="Field A"
 					tooltip="This is a required field"
 					rules={[{ required: true, message: 'Please input your password!' }]}
 				>
 					<Input></Input>
-				</Form.Item>
+				</MyFormItem>
+				<MyFormItem
+					label="Field A"
+					tooltip="This is a required field"
+					rules={[{ required: true, message: 'Please input your password!' }]}
+				>
+					<TextArea autoSize></TextArea>
+				</MyFormItem>
 				<MyFormItem
 					label="Field B"
-					name="Field B"
 					tooltip="This is a required field"
 					rules={[{ required: true, message: 'Please input your password!' }]}
 				>
 					<Select
-						placeholder="abc"
 						showSearch
 						mode="multiple"
+						options={[
+							{
+								value: 'lucy',
+								label: 'Lucy',
+							},
+							{
+								value: 'dan',
+								label: 'Dan',
+							},
+							{
+								value: 'tom',
+								label: 'Tom',
+							},
+						]}
+					/>
+				</MyFormItem>
+				<MyFormItem
+					label="Field B"
+					tooltip="This is a required field"
+					rules={[{ required: true, message: 'Please input your password!' }]}
+				>
+					<Select
+						showSearch
 						options={[
 							{
 								value: 'lucy',
