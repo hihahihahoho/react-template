@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
@@ -11,12 +8,16 @@ body {
 
 .ant-select-selector {
 	/* @apply border-blue-500 !important; */
+	padding: theme('spacing.4') theme('spacing.2');
 }
 .ant-form-item-label {
 	display: flex !important;
-	align-items: center;
+	overflow: visible !important;
+	label {
+		transform: translateY(-50%);
+	}
 }
-.ant-form-item-label::after {
+.ant-form-item-label .ant-form-item-label::after {
 	content: '';
 	flex: 1 0 auto;
 	margin-left: 8px;

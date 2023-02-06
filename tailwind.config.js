@@ -6,7 +6,9 @@ module.exports = {
 	theme: {
 		extend: {},
 	},
-	plugins: [],
+	plugins: [
+		require("tailwindcss/nesting")
+	],
 	corePlugins: {
 		preflight: false
 	}

@@ -36,10 +36,9 @@ const StyledFormItem = styled.div<CustomFormItemProp>`
 	}
 	& .ant-form-item-label {
 		position: absolute;
-		z-index: 3;
 		width: 100%;
 		padding: 0 12px;
-		transform: translateY(-50%);
+		height: ${({ customSize = 'default' }) => getFormHeight(customSize)}px;
 	}
 	& .ant-select-single {
 		.ant-select-selector {

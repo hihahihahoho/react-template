@@ -4,6 +4,7 @@
 	"private": true,
 	"dependencies": {
 		"@ant-design/icons": "^4.8.0",
+		"@craco/craco": "^7.0.0",
 		"@emotion/react": "^11.10.5",
 		"@emotion/styled": "^11.10.5",
 		"@testing-library/jest-dom": "^5.14.1",
@@ -22,11 +23,14 @@
 		"favicons-webpack-plugin": "^6.0.0",
 		"ftp-deploy": "^2.4.3",
 		"husky": "^8.0.3",
+		"i": "^0.3.7",
 		"lint-staged": "^13.1.0",
 		"lodash": "^4.17.21",
+		"npm": "^9.4.1",
+		"postcss-import": "^15.1.0",
+		"postcss-nesting": "^11.1.0",
 		"prettier": "^2.8.2",
 		"react": "^18.2.0",
-		"react-app-rewired": "^2.2.1",
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.6.1",
 		"react-scripts": "5.0.1",
@@ -42,12 +46,12 @@
 		]
 	},
 	"scripts": {
-		"start": "react-app-rewired start",
-		"build": "react-app-rewired build",
+		"start": "craco start",
+		"build": "craco build",
 		"build:design": "env-cmd -f .env.design yarn build",
 		"deployFtp": "env-cmd -f .env.design yarn build && node deploy.config.js",
-		"test": "react-app-rewired test",
-		"eject": "react-app-rewired eject",
+		"test": "craco test",
+		"eject": "craco eject",
 		"prepare": "husky install"
 	},
 	"eslintConfig": {
@@ -72,6 +76,7 @@
 		"@types/lodash": "^4.14.191",
 		"@types/react-router-dom": "^5.3.3",
 		"@types/styled-components": "^5.1.26",
+		"craco-esbuild": "^0.5.2",
 		"husky": "^8.0.0",
 		"webpack-cli": "^5.0.1"
 	}
