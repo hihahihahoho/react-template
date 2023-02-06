@@ -4,11 +4,12 @@ module.exports = {
 		"./src/**/*.{js,jsx,ts,tsx}",
 	],
 	theme: {
-		extend: {},
+		extend: {
+			input: {
+				sm: 44
+			}
+		},
 	},
-	plugins: [
-		require("tailwindcss/nesting")
-	],
 	corePlugins: {
 		preflight: false
 	}
