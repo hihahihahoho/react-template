@@ -84,7 +84,7 @@ const Home: React.FC = () => {
 					</MyFormItem>
 					<Form.Item>
 						<Button type="primary" htmlType="submit" className="">
-							<span className="text-primary">Submit</span>
+							Submit
 						</Button>
 					</Form.Item>
 				</Form>

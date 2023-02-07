@@ -33,4 +33,5 @@ legend {
 
 .ant-btn-primary {
 	background-color: theme('colors.primary') !important;
+	@apply shadow-lg shadow-primary/30;
 }
