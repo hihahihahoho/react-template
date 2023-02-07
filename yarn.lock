@@ -1412,7 +1412,7 @@
 
 "@emotion/react@^11.10.5":
   version "11.10.5"
-  resolved "https://registry.npmjs.org/@emotion/react/-/react-11.10.5.tgz"
+  resolved "https://registry.yarnpkg.com/@emotion/react/-/react-11.10.5.tgz#95fff612a5de1efa9c0d535384d3cfa115fe175d"
   integrity sha512-TZs6235tCJ/7iF6/rvTaOH4oxQg2gMAcdHemjwLKIjKz4rRuYe1HJ2TQJKnAcRAfOUDdU8XoDadCe1rl72iv8A==
   dependencies:
     "@babel/runtime" "^7.18.3"
@@ -4192,6 +4192,14 @@ case-sensitive-paths-webpack-plugin@^2.4.0:
   resolved "https://registry.npmjs.org/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.4.0.tgz"
   integrity sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==
 
+chalk@4.1.2, chalk@^4.0.0, chalk@^4.0.2, chalk@^4.1.0, chalk@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz"
+  integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
+  dependencies:
+    ansi-styles "^4.1.0"
+    supports-color "^7.1.0"
+
 chalk@^2.0.0, chalk@^2.4.1:
   version "2.4.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz"
@@ -4205,14 +4213,6 @@ chalk@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/chalk/-/chalk-3.0.0.tgz"
   integrity sha512-4D3B6Wf41KOYRFdszmDqMCGq5VV/uMAB273JILmO+3jAlh8X4qDtdtgCR3fxtbLEMzSx22QdhnDcJvu2u1fVwg==
-  dependencies:
-    ansi-styles "^4.1.0"
-    supports-color "^7.1.0"
-
-chalk@^4.0.0, chalk@^4.0.2, chalk@^4.1.0, chalk@^4.1.2:
-  version "4.1.2"
-  resolved "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz"
-  integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
@@ -4466,7 +4466,7 @@ color-support@^1.1.3:
   resolved "https://registry.yarnpkg.com/color-support/-/color-support-1.1.3.tgz#93834379a1cc9a0c61f82f52f0d04322251bd5a2"
   integrity sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==
 
-color@^4.2.3:
+color@^4.1.0, color@^4.2.3:
   version "4.2.3"
   resolved "https://registry.npmjs.org/color/-/color-4.2.3.tgz"
   integrity sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==
@@ -8199,6 +8199,11 @@ just-diff@^5.0.1:
   resolved "https://registry.yarnpkg.com/just-diff/-/just-diff-5.2.0.tgz#60dca55891cf24cd4a094e33504660692348a241"
   integrity sha512-6ufhP9SHjb7jibNFrNxyFZ6od3g+An6Ai9mhGRvcYe8UJlH0prseN64M+6ZBBUoKYHZsitDP42gAJ8+eVWr3lw==
 
+just-unique@^4.1.1:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/just-unique/-/just-unique-4.2.0.tgz#80927360b92f5039fad7e7f5f8bc48904d9177b6"
+  integrity sha512-cxQGGUiit6CGUpuuiezY8N4m1wgF4o7127rXEXDFcxeDUFfdV7gSkwA26Fe2wWBiNQq2SZOgN4gSmMxB/StA8Q==
+
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
@@ -8466,6 +8471,11 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.npmjs.org/lodash.debounce/-/lodash.debounce-4.0.8.tgz"
   integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
 
+lodash.get@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+  integrity sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==
+
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npmjs.org/lodash.memoize/-/lodash.memoize-4.1.2.tgz"
@@ -8475,6 +8485,11 @@ lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
+
+lodash.mergewith@^4.6.2:
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.2.tgz#617121f89ac55f59047c7aec1ccd6654c6590f55"
+  integrity sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==
 
 lodash.sortby@^4.7.0:
   version "4.7.0"
@@ -10979,6 +10994,11 @@ react-error-overlay@^6.0.11:
   resolved "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.11.tgz"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
 
+react-icons@^4.7.1:
+  version "4.7.1"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.7.1.tgz#0f4b25a5694e6972677cb189d2a72eabea7a8345"
+  integrity sha512-yHd3oKGMgm7zxo3EA7H2n7vxSoiGmHk5t6Ou4bXsfcgWyhfDKMpyKfhHR6Bjnn63c+YXBLBPUql9H4wPJM6sXw==
+
 react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -12372,6 +12392,16 @@ symbol-tree@^3.2.4:
   resolved "https://registry.npmjs.org/symbol-tree/-/symbol-tree-3.2.4.tgz"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
+tailwindcss-themer@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/tailwindcss-themer/-/tailwindcss-themer-2.0.3.tgz#d645aa0d0b2cbf68806eeb864d647f9ceb7d8f32"
+  integrity sha512-vVJ4waT7U7vCurpnReAUsYhDLq/BFSg+ul5B5rOTHNgfC91E9w0qRB7lQJKqmJVzmErwtARmBqv/WccBqAvNzg==
+  dependencies:
+    color "^4.1.0"
+    just-unique "^4.1.1"
+    lodash.merge "^4.6.2"
+    lodash.mergewith "^4.6.2"
+
 tailwindcss@^3.0.2, tailwindcss@^3.2.4:
   version "3.2.4"
   resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.2.4.tgz"
@@ -12670,6 +12700,18 @@ tweetnacl@^0.14.3:
   version "0.14.5"
   resolved "https://registry.npmjs.org/tweetnacl/-/tweetnacl-0.14.5.tgz"
   integrity sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==
+
+twin.macro@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/twin.macro/-/twin.macro-3.1.0.tgz#2056a83f7e4043c03587e664477e92feefc8df0e"
+  integrity sha512-7DSR/xdvSaAqhTM4JptBgI+1IzXQR5v+2hp0CDMmHMjlm44IBEewU8MeqPlXmFgQI06zpLyJMaKRbJu96drAJw==
+  dependencies:
+    "@babel/template" "^7.18.10"
+    babel-plugin-macros "^3.1.0"
+    chalk "4.1.2"
+    lodash.get "^4.4.2"
+    lodash.merge "^4.6.2"
+    postcss-selector-parser "^6.0.10"
 
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"
