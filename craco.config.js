@@ -15,7 +15,7 @@ module.exports = {
 			add: [
 				new FaviconsWebpackPlugin({
 					logo: './src/assets/favicon.png',
-					publicPath: `/${process.env.PUBLIC_SITE_DIR}`
+					publicPath: process.env.PUBLIC_SITE_DIR ? `/${process.env.PUBLIC_SITE_DIR}` : ''
 				})
 			],
 		},

@@ -28,9 +28,7 @@ module.exports = {
 					name: 'vietcombank',
 					extend: {
 						colors: {
-							primary: 'blue',
-							boxColor: 'green',
-							formBorder: '#6b7280'
+							primary: 'green',
 						}
 					}
 				}

@@ -1,24 +1,63 @@
 import { Button, Form, Input, Select } from 'antd';
-import { useState } from 'react';
+import axios from 'axios';
+import produce from 'immer';
+import { useEffect, useState } from 'react';
+import { useStore } from 'zustand';
 import MyFormItem from '../../components/forms/MyFormItem';
+import useThemeStore from '../../states/useThemeStore';
 const { TextArea } = Input;
-const defaultTheme = require('tailwindcss/defaultTheme');
-
 const onFinish = (values: any) => {
 	console.log('Success:', values);
 };
 
-console.log(defaultTheme.colors);
-
 const Home: React.FC = () => {
-	const [theme, setTheme] = useState('');
-	const handleClick = () => {
-		setTheme(theme === 'dark' ? '' : 'dark');
+	const { setTheme, theme, mode, toggleMode }: any = useStore(useThemeStore);
+	const handleClickMode = () => toggleMode('dark');
+	const handleClickThemeDefault = () => setTheme('');
+	const handleClickThemeVietcombank = () => setTheme('vietcombank');
+	const [data, setData] = useState(null);
+	const [tree, setTree] = useState<any>({
+		forest: {
+			contains: {
+				a: 'bear',
+			},
+			weather: {
+				isRaining: true,
+			},
+		},
+	});
+	const handleClickTree = () => {
+		setTree(
+			produce((draft: any) => {
+				draft.forest.contains.a = 'dog';
+			}),
+		);
 	};
+
+	useEffect(() => {
+		console.log('a');
+		axios
+			.get('/v1/partners', {
+				headers: {
+					Authorization: `67890`,
+				},
+			})
+			.then((response) => {
+				setData(response.data);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}, []);
+
+	console.log(data);
 	return (
 		<>
-			<div className={`box bg-boxColor p-8 rounded-xl ${theme}`}>
-				<Button onClick={handleClick}>Change Theme</Button>
+			<div className={`box bg-boxColor p-8 rounded-xl ${mode} ${theme}`}>
+				<Button onClick={handleClickMode}>{mode} mode</Button>
+				<Button onClick={handleClickThemeDefault}>Default theme</Button>
+				<Button onClick={handleClickThemeVietcombank}>Vietcombank theme</Button>
+				<Button onClick={handleClickTree}>Test tree</Button>
 
 				<Form layout="vertical" onFinish={onFinish}>
 					<MyFormItem
