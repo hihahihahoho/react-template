@@ -29,7 +29,7 @@ const Home: React.FC = () => {
 	const handleClickTree = () => {
 		setTree(
 			produce((draft: any) => {
-				draft.forest.contains.a = 'dog';
+				draft.forest.weather.isRaining = !draft.forest.weather.isRaining;
 			}),
 		);
 	};
@@ -50,7 +50,7 @@ const Home: React.FC = () => {
 			});
 	}, []);
 
-	console.log(data);
+	console.log(tree);
 	return (
 		<>
 			<div className={`box bg-boxColor p-8 rounded-xl ${mode} ${theme}`}>
