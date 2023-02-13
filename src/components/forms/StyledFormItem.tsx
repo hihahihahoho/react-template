@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled/macro';
+import tw from 'twin.macro';
 import { THEME } from '../../config/theme';
 
 export interface CustomFormItemProp {
@@ -14,6 +15,9 @@ const StyledFormItem = styled.div<CustomFormItemProp>`
 	& {
 		position: relative;
 	}
+	& .ant-select-arrow {
+		font-size: 24px;
+	}
 	& .ant-select {
 		width: 100%;
 	}
@@ -26,6 +30,12 @@ const StyledFormItem = styled.div<CustomFormItemProp>`
 		}}px;
 		position: absolute;
 		top: 0;
+		padding: 0 14px 0 8px;
+		${tw`rounded-lg`}
+		margin: 0;
+		border: 1px solid;
+		${tw`border-formBorder`};
+		pointer-events: none;
 	}
 	& .ant-form-item-control-input,
 	input {
@@ -39,6 +49,25 @@ const StyledFormItem = styled.div<CustomFormItemProp>`
 		width: 100%;
 		padding: 0 12px;
 		height: ${({ customSize = 'default' }) => getFormHeight(customSize)}px;
+		display: flex !important;
+		overflow: visible !important;
+		label {
+			transform: translateY(-50%);
+		}
+		&::after {
+			content: '';
+			flex: 1 0 auto;
+			margin-left: 8px;
+			border-top: 1px solid;
+			${tw`border-formBorder`};
+		}
+	}
+	& .ant-select-selector,
+	& .ant-input {
+		background-color: transparent !important;
+		border: 0;
+		box-shadow: none !important;
+		padding: 5px 12px;
 	}
 	& .ant-select-single {
 		.ant-select-selector {
@@ -53,6 +82,9 @@ const StyledFormItem = styled.div<CustomFormItemProp>`
 		}
 	}
 	& .ant-select-multiple {
+		.ant-select-selection-search-input {
+			min-height: 0;
+		}
 		.ant-select-selector {
 			min-height: ${({ customSize = 'default' }) => getFormHeight(customSize)}px;
 		}

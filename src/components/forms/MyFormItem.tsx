@@ -1,6 +1,7 @@
 import { DatePicker, Form, FormItemProps, Input, Select } from 'antd';
 import classnames from 'classnames';
 import React, { useState } from 'react';
+import { RiArrowDownSLine } from 'react-icons/ri';
 import StyledFormItem, { CustomFormItemProp } from './StyledFormItem';
 
 const { TextArea } = Input;
@@ -63,6 +64,8 @@ export default function MyFormItem({ customStyle, ...props }: Props) {
 								handleChange(value);
 								child.props.onChange?.(value);
 							};
+							modifyProps.suffixIcon = child.props.suffixIcon ? child.props.suffixIcon : <RiArrowDownSLine />;
+							modifyProps.showArrow = child.props.showArrow ? child.props.showArrow : true;
 						}
 						if (child.type === Input || child.type === TextArea) {
 							modifyProps.onFocus = (event: React.FocusEvent) => {
