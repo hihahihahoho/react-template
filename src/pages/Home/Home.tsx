@@ -1,7 +1,8 @@
 import { Button, Form, Input, Select } from 'antd';
 import axios from 'axios';
 import produce from 'immer';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { QueryClient, useQuery } from 'react-query';
 import { useStore } from 'zustand';
 import MyFormItem from '../../components/forms/MyFormItem';
 import useThemeStore from '../../states/useThemeStore';
@@ -10,12 +11,14 @@ const onFinish = (values: any) => {
 	console.log('Success:', values);
 };
 
+const queryClient = new QueryClient();
+
 const Home: React.FC = () => {
 	const { setTheme, theme, mode, toggleMode }: any = useStore(useThemeStore);
 	const handleClickMode = () => toggleMode('dark');
 	const handleClickThemeDefault = () => setTheme('');
 	const handleClickThemeVietcombank = () => setTheme('vietcombank');
-	const [data, setData] = useState(null);
+	// const [data, setData] = useState(null);
 	const [tree, setTree] = useState<any>({
 		forest: {
 			contains: {
@@ -33,24 +36,17 @@ const Home: React.FC = () => {
 			}),
 		);
 	};
-
-	useEffect(() => {
-		console.log('a');
+	const { isLoading, error, data, isFetching } = useQuery('repoData', () =>
 		axios
-			.get('/v1/partners', {
+			.get('/v1/menuhdsd/vcb', {
 				headers: {
 					Authorization: `67890`,
 				},
 			})
-			.then((response) => {
-				setData(response.data);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}, []);
+			.then((res) => res.data),
+	);
 
-	console.log(tree);
+	console.log(data);
 	return (
 		<>
 			<div className={`box bg-boxColor p-8 rounded-xl ${mode} ${theme}`}>
