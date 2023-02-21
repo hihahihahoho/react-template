@@ -1,4 +1,4 @@
-import { Button, Form, Input, Select } from 'antd';
+import { Button, Form, Input, Modal, Select } from 'antd';
 import axios from 'axios';
 import produce from 'immer';
 import { useState } from 'react';
@@ -19,6 +19,7 @@ const Home: React.FC = () => {
 	const handleClickThemeDefault = () => setTheme('');
 	const handleClickThemeVietcombank = () => setTheme('vietcombank');
 	// const [data, setData] = useState(null);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [tree, setTree] = useState<any>({
 		forest: {
 			contains: {
@@ -46,6 +47,14 @@ const Home: React.FC = () => {
 			.then((res) => res.data),
 	);
 
+	const handleButtonModalClick = () => {
+		setIsModalOpen(true);
+	};
+
+	const handleCancel = () => {
+		setIsModalOpen(false);
+	};
+
 	console.log(data);
 	return (
 		<>
@@ -54,6 +63,7 @@ const Home: React.FC = () => {
 				<Button onClick={handleClickThemeDefault}>Default theme</Button>
 				<Button onClick={handleClickThemeVietcombank}>Vietcombank theme</Button>
 				<Button onClick={handleClickTree}>Test tree</Button>
+				<Button onClick={handleButtonModalClick}>Modal Open</Button>
 
 				<Form layout="vertical" onFinish={onFinish}>
 					<MyFormItem
@@ -124,6 +134,13 @@ const Home: React.FC = () => {
 					</Form.Item>
 				</Form>
 			</div>
+			<Modal title="Basic Modal" open={isModalOpen} onCancel={handleCancel}>
+				<Form layout="vertical">
+					<MyFormItem label="focus input">
+						<Input ref={(input) => input && input.focus()}></Input>
+					</MyFormItem>
+				</Form>
+			</Modal>
 		</>
 	);
 };
