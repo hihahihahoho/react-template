@@ -1,17 +1,21 @@
 import { Button, Form, Input, Modal, Select } from 'antd';
-import axios from 'axios';
+// import { gapi } from 'gapi-script';
 import produce from 'immer';
 import { useState } from 'react';
-import { QueryClient, useQuery } from 'react-query';
 import { useStore } from 'zustand';
 import MyFormItem from '../../components/forms/MyFormItem';
+import { GoogleImageUploadButton, GoogleLoginButton, GoogleLogoutButton } from '../../components/GgDriveUploader';
 import useThemeStore from '../../states/useThemeStore';
 const { TextArea } = Input;
+
 const onFinish = (values: any) => {
 	console.log('Success:', values);
 };
 
-const queryClient = new QueryClient();
+export const CLIENT_ID = '70816812996-rouhd80qba9vvbu00vn2pd7oab8tnkrc.apps.googleusercontent.com';
+export const API_KEY = 'AIzaSyDZ0UhrwW13scAgcHCIIvQCatIBOHF8Y_o';
+export const FOLDER_ID = '1yHmyPb1Mr57E31ua1H2zL2bhOp_BASeM';
+export const SCOPE = 'https://www.googleapis.com/auth/drive';
 
 const Home: React.FC = () => {
 	const { setTheme, theme, mode, toggleMode }: any = useStore(useThemeStore);
@@ -30,6 +34,7 @@ const Home: React.FC = () => {
 			},
 		},
 	});
+
 	const handleClickTree = () => {
 		setTree(
 			produce((draft: any) => {
@@ -37,15 +42,15 @@ const Home: React.FC = () => {
 			}),
 		);
 	};
-	const { isLoading, error, data, isFetching } = useQuery('repoData', () =>
-		axios
-			.get('/v1/menuhdsd/vcb', {
-				headers: {
-					Authorization: `67890`,
-				},
-			})
-			.then((res) => res.data),
-	);
+	// const { isLoading, error, data, isFetching } = useQuery('repoData', () =>
+	// 	axios
+	// 		.get('/v1/menuhdsd/vcb', {
+	// 			headers: {
+	// 				Authorization: `67890`,
+	// 			},
+	// 		})
+	// 		.then((res) => res.data),
+	// );
 
 	const handleButtonModalClick = () => {
 		setIsModalOpen(true);
@@ -55,9 +60,12 @@ const Home: React.FC = () => {
 		setIsModalOpen(false);
 	};
 
-	console.log(data);
+	// console.log(data);
 	return (
 		<>
+			<GoogleLoginButton />
+			<GoogleLogoutButton />
+			<GoogleImageUploadButton />
 			<div className={`box bg-boxColor p-8 rounded-xl ${mode} ${theme}`}>
 				<Button onClick={handleClickMode}>{mode} mode</Button>
 				<Button onClick={handleClickThemeDefault}>Default theme</Button>

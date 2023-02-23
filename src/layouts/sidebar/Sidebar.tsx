@@ -49,7 +49,6 @@ const Sidebar: React.FC = () => {
 	const location = useLocation();
 	const currentLocation = [getIdByName(modifiedRouter, removeTrailingSlash(location.pathname), 'key', 'fullPath')];
 	const currentOpen = getAncestors(currentLocation[0]);
-	console.log(location);
 
 	return (
 		<>

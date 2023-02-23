@@ -82,7 +82,6 @@ export default function MyFormItem({ customStyle, ...props }: Props) {
 							};
 							modifyProps.onResize = ({ width, height }: any) => {
 								setInputHeight(height);
-								console.log(height);
 							};
 						}
 						return typeof allowedTypes.includes(child.type) ? React.cloneElement(child, modifyProps) : child;
