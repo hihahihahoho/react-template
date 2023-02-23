@@ -1,21 +1,28 @@
-import { Button, Form, Input, Select } from 'antd';
-import axios from 'axios';
+import { Button, Form, Input, Modal, Select } from 'antd';
+// import { gapi } from 'gapi-script';
 import produce from 'immer';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useStore } from 'zustand';
 import MyFormItem from '../../components/forms/MyFormItem';
+import { GoogleImageUploadButton, GoogleLoginButton, GoogleLogoutButton } from '../../components/GgDriveUploader';
 import useThemeStore from '../../states/useThemeStore';
 const { TextArea } = Input;
+
 const onFinish = (values: any) => {
 	console.log('Success:', values);
 };
+
+export const CLIENT_ID = '70816812996-rouhd80qba9vvbu00vn2pd7oab8tnkrc.apps.googleusercontent.com';
+export const FOLDER_ID = '1yHmyPb1Mr57E31ua1H2zL2bhOp_BASeM';
+export const SCOPE = 'https://www.googleapis.com/auth/drive';
 
 const Home: React.FC = () => {
 	const { setTheme, theme, mode, toggleMode }: any = useStore(useThemeStore);
 	const handleClickMode = () => toggleMode('dark');
 	const handleClickThemeDefault = () => setTheme('');
 	const handleClickThemeVietcombank = () => setTheme('vietcombank');
-	const [data, setData] = useState(null);
+	// const [data, setData] = useState(null);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [tree, setTree] = useState<any>({
 		forest: {
 			contains: {
@@ -26,6 +33,7 @@ const Home: React.FC = () => {
 			},
 		},
 	});
+
 	const handleClickTree = () => {
 		setTree(
 			produce((draft: any) => {
@@ -33,31 +41,36 @@ const Home: React.FC = () => {
 			}),
 		);
 	};
+	// const { isLoading, error, data, isFetching } = useQuery('repoData', () =>
+	// 	axios
+	// 		.get('/v1/menuhdsd/vcb', {
+	// 			headers: {
+	// 				Authorization: `67890`,
+	// 			},
+	// 		})
+	// 		.then((res) => res.data),
+	// );
 
-	useEffect(() => {
-		console.log('a');
-		axios
-			.get('/v1/partners', {
-				headers: {
-					Authorization: `67890`,
-				},
-			})
-			.then((response) => {
-				setData(response.data);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}, []);
+	const handleButtonModalClick = () => {
+		setIsModalOpen(true);
+	};
 
-	console.log(tree);
+	const handleCancel = () => {
+		setIsModalOpen(false);
+	};
+
+	// console.log(data);
 	return (
 		<>
+			<GoogleLoginButton />
+			<GoogleLogoutButton />
+			<GoogleImageUploadButton />
 			<div className={`box bg-boxColor p-8 rounded-xl ${mode} ${theme}`}>
 				<Button onClick={handleClickMode}>{mode} mode</Button>
 				<Button onClick={handleClickThemeDefault}>Default theme</Button>
 				<Button onClick={handleClickThemeVietcombank}>Vietcombank theme</Button>
 				<Button onClick={handleClickTree}>Test tree</Button>
+				<Button onClick={handleButtonModalClick}>Modal Open</Button>
 
 				<Form layout="vertical" onFinish={onFinish}>
 					<MyFormItem
@@ -128,6 +141,13 @@ const Home: React.FC = () => {
 					</Form.Item>
 				</Form>
 			</div>
+			<Modal title="Basic Modal" open={isModalOpen} onCancel={handleCancel}>
+				<Form layout="vertical">
+					<MyFormItem label="focus input">
+						<Input ref={(input) => input && input.focus()}></Input>
+					</MyFormItem>
+				</Form>
+			</Modal>
 		</>
 	);
 };

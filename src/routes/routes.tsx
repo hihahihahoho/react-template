@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import Page404 from '../pages/404/404';
-// import Home from '../pages/Home/Home';
+import ChatGPT from '../pages/ChatGPT/ChatGPT';
 import Female from '../pages/Products/Female/Female';
 import Pants from '../pages/Products/Female/Pants/Pants';
 import PantsDetail from '../pages/Products/Female/Pants/PantsDetail';
@@ -35,6 +35,11 @@ const routes: RouteConfigInterface[] = [
 		component: Home,
 		path: '/',
 		index: true,
+	},
+	{
+		title: 'Chat GPT',
+		component: ChatGPT,
+		path: '/chatgpt',
 	},
 	{
 		title: 'Sản phẩm',
@@ -89,6 +94,5 @@ const routes: RouteConfigInterface[] = [
 addKeys(routes, 'children');
 
 const modifiedRouter: RouteConfigInterface[] = addKeys(modifyRouterProperties(routes), 'children');
-console.log(modifiedRouter);
 export type { RouteConfigInterface };
 export { routes, page404, modifiedRouter };

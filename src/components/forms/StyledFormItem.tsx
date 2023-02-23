@@ -22,7 +22,8 @@ const StyledFormItem = styled.div<CustomFormItemProp>`
 		width: 100%;
 	}
 	fieldset {
-		width: 100%;
+		left: 0;
+		right: 0;
 		z-index: 2;
 		height: ${({ customSize = 'default' }) => getFormHeight(customSize)}px;
 		min-height: ${({ inputHeight }) => {
