@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 const FtpDeploy = require("ftp-deploy");
 const ftpDeploy = new FtpDeploy();
-const ftpConfig = require('./ftp.config')
+const ftpConfig = require('./ftp.config.js')
 dotenv.config({ path: '.env.design' })
 const config = {
 	...ftpConfig,

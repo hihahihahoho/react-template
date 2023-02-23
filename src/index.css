@@ -17,7 +17,6 @@ body {
 .ant-form-item-label {
 	display: flex !important;
 	overflow: visible !important;
-	height: theme('input.sm');
 	label {
 		transform: translateY(-50%);
 	}
