@@ -94,3 +94,14 @@ export const getAncestors = (path?: string): string[] => {
 	}, []);
 	return ancestors;
 };
+
+export function uriToFile(uri: string, fileName: string): File {
+	const byteString = atob(uri.split(',')[1]);
+	const mimeString = uri.split(',')[0].split(':')[1].split(';')[0];
+	const ab = new ArrayBuffer(byteString.length);
+	const ia = new Uint8Array(ab);
+	for (let i = 0; i < byteString.length; i++) {
+		ia[i] = byteString.charCodeAt(i);
+	}
+	return new File([ab], fileName, { type: mimeString });
+}
