@@ -87,8 +87,9 @@ export function GoogleLogoutButton() {
 	);
 }
 
-export function GoogleImageUpload({ file, accessToken }: { file: File; accessToken: string }) {
+export function GoogleImageUpload({ file, accessToken }: { file?: File; accessToken?: string }) {
 	const [imageState, setImageState] = useState<string | null>(null);
+	const [image, setImage] = useState<any>(null);
 
 	const url = 'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart';
 	const boundary = 'foo_bar_baz';
@@ -108,8 +109,8 @@ export function GoogleImageUpload({ file, accessToken }: { file: File; accessTok
 	};
 
 	const metadata = {
-		name: file.name,
-		mimeType: file.type,
+		name: file?.name,
+		mimeType: file?.type,
 		parents: ['1mcNtQmCNT8cPqc1z7D9IgaDm5rdJSfAh'],
 	};
 
@@ -123,7 +124,7 @@ export function GoogleImageUpload({ file, accessToken }: { file: File; accessTok
 
 			const response = await axios.post(url, body, config);
 			const uploadedImage = `https://drive.google.com/uc?export=view&id=${response.data.id}`;
-			setImageState(uploadedImage);
+			setImage(uploadedImage);
 		} catch (error) {
 			console.log(error);
 			setImageState('error');
@@ -132,14 +133,17 @@ export function GoogleImageUpload({ file, accessToken }: { file: File; accessTok
 
 	const handleResizeComplete = async (file: any) => {
 		setImageState('optimizing');
+		console.log('optimizing');
 		const resizedImageUri: any = await resizeFile(file);
 		const resizedImageFile = uriToFile(resizedImageUri, file.name);
 		await uploadImage(resizedImageFile);
 	};
 
 	useEffect(() => {
-		handleResizeComplete(file);
+		if (image) return;
+		// handleResizeComplete(file);
 	}, []);
+	console.log('firsta');
 
 	return (
 		<>
@@ -152,7 +156,7 @@ export function GoogleImageUpload({ file, accessToken }: { file: File; accessTok
 						</div>
 					) : (
 						<Image
-							src={imageState || 'https://via.placeholder.com/150'}
+							src={image || 'https://via.placeholder.com/150'}
 							alt=""
 							placeholder={
 								<div>
@@ -187,7 +191,9 @@ export function GoogleImageUploadButton() {
 			<Button onClick={handleOnClick}>Upload Image</Button>
 			<div className="grid grid-cols-4 gap-4">
 				{files &&
-					files.map((file: any, index: any) => <GoogleImageUpload key={index} file={file} accessToken={accessToken} />)}
+					files.map((file: any, index: number) => {
+						return <GoogleImageUpload key={index} file={file} accessToken={accessToken} />;
+					})}
 			</div>
 		</>
 	);
