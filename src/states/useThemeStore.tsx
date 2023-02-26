@@ -9,8 +9,6 @@ const useThemeStore = create(
 			toggleMode: () => set((state: any) => ({ mode: state.mode === 'dark' ? 'light' : 'dark' })),
 			setTheme: (name: any) => set({ theme: name }),
 			resetTheme: () => set({ theme: '' }),
-			user: {},
-			setUser: (user: any) => set({ user: user }),
 		}),
 		{
 			name: 'theme-storage', // unique name

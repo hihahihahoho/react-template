@@ -4,7 +4,12 @@ import produce from 'immer';
 import { useState } from 'react';
 import { useStore } from 'zustand';
 import MyFormItem from '../../components/forms/MyFormItem';
-import { GoogleImageUploadButton, GoogleLoginButton, GoogleLogoutButton } from '../../components/GgDriveUploader';
+import {
+	GoogleImageUploadButton,
+	GoogleImageUploadImage,
+	GoogleLoginButton,
+	GoogleLogoutButton,
+} from '../../components/GgDriveUploader';
 import useThemeStore from '../../states/useThemeStore';
 const { TextArea } = Input;
 
@@ -52,6 +57,8 @@ const Home: React.FC = () => {
 			<GoogleLoginButton />
 			<GoogleLogoutButton />
 			<GoogleImageUploadButton />
+			<GoogleImageUploadButton />
+			<GoogleImageUploadImage />
 			<div className={`box bg-boxColor p-8 rounded-xl ${mode} ${theme}`}>
 				<Button onClick={handleClickMode}>{mode} mode</Button>
 				<Button onClick={handleClickThemeDefault}>Default theme</Button>
